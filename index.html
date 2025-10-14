@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperDigi - Koleksi Tools AI</title>
+    <!-- Pengaturan PWA -->
+    <meta name="theme-color" content="#f8eddd"/>
+    <link rel="manifest" href="manifest.json">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8eddd;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="min-h-screen flex flex-col items-center justify-center p-4">
+        <!-- Kontainer Utama -->
+        <div class="w-full max-w-4xl text-center">
+            
+            <!-- Header -->
+            <header class="mb-12">
+                <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760373175/Black_and_Cream_Colorful_Retro_Vintage_Apparel_Logo_2_eid86m.png" alt="Logo SuperDigi" class="mx-auto h-24 md:h-32 mb-6">
+            </header>
+
+            <!-- Grid untuk Tools -->
+            <main class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                
+                <!-- Tool Card 1: Ai Gen+ Foto -->
+                <a href="#" class="bg-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out group overflow-hidden">
+                    <!-- Foto sudah diganti sesuai permintaan -->
+                    <img src="https://file.aitubo.ai/assets/doc/2024/10/ba9316fa9.jpg!w1280" alt="AI Gen+ Foto" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-4 text-center">
+                        <h2 class="text-lg font-semibold text-gray-900">Ai Gen+ Foto</h2>
+                        <p class="text-sm text-gray-600 mt-1">Buat gambar dari teks.</p>
+                    </div>
+                </a>
+
+                <!-- Tool Card 2: Ai Gen+ Famy -->
+                <a href="#" class="bg-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out group overflow-hidden">
+                    <!-- Ganti 'src' dengan URL gambar Anda -->
+                    <img src="https://placehold.co/400x300/c7d2fe/1f2937?text=Ai+Gen%2B+Famy" alt="AI Gen+ Famy" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-4 text-center">
+                        <h2 class="text-lg font-semibold text-gray-900">Ai Gen+ Famy</h2>
+                        <p class="text-sm text-gray-600 mt-1">Generator silsilah keluarga.</p>
+                    </div>
+                </a>
+
+                <!-- Tool Card 3: Ai Gen+ WPage -->
+                <a href="#" class="bg-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out group overflow-hidden">
+                    <!-- Ganti 'src' dengan URL gambar Anda -->
+                    <img src="https://placehold.co/400x300/fef08a/1f2937?text=Ai+Gen%2B+WPage" alt="AI Gen+ WPage" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-4 text-center">
+                        <h2 class="text-lg font-semibold text-gray-900">Ai Gen+ WPage</h2>
+                         <p class="text-sm text-gray-600 mt-1">Buat halaman web instan.</p>
+                    </div>
+                </a>
+
+                <!-- Tool Card 4: Ai Gen+ PreWed -->
+                <a href="#" class="bg-white rounded-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out group overflow-hidden">
+                    <!-- Ganti 'src' dengan URL gambar Anda -->
+                    <img src="https://placehold.co/400x300/fbcfe8/1f2937?text=Ai+Gen%2B+PreWed" alt="AI Gen+ PreWed" class="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-300">
+                    <div class="p-4 text-center">
+                        <h2 class="text-lg font-semibold text-gray-900">Ai Gen+ PreWed</h2>
+                         <p class="text-sm text-gray-600 mt-1">Ide & konsep pre-wedding.</p>
+                    </div>
+                </a>
+
+            </main>
+            
+            <!-- Footer -->
+            <footer class="mt-12 text-center text-gray-500 text-sm">
+                <p>&copy; 2024 SuperDigi. Dibuat dengan ❤️</p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script>
+        // Mendaftarkan Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    })
+                    .catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+            });
+        }
+    </script>
+
+</body>
+</html>
+
