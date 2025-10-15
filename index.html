@@ -29,8 +29,11 @@
 <body class="text-gray-800 antialiased">
 
     <!-- ===== HALAMAN UNTUK PENGGUNA BROWSER (HANYA LOGO) ===== -->
-    <div id="install-prompt-page" class="min-h-screen flex items-center justify-center p-6 hidden">
-        <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760373175/Black_and_Cream_Colorful_Retro_Vintage_Apparel_Logo_2_eid86m.png" alt="Logo SuperDigi" class="mx-auto h-24">
+    <div id="install-prompt-page" class="min-h-screen flex flex-col items-center justify-center p-6 hidden relative">
+        <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760373175/Black_and_Cream_Colorful_Retro_Vintage_Apparel_Logo_2_eid86m.png" alt="Logo SuperDigi" class="mx-auto h-32">
+        <footer class="absolute bottom-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Superdigi AI Tools</p>
+        </footer>
     </div>
 
 
@@ -104,7 +107,7 @@
                 </main>
                 
                 <footer class="mt-16 text-center text-gray-600 text-sm">
-                    <p>&copy; 2025 SuperDigi.</p>
+                    <p>&copy; 2025 Superdigi AI Tools</p>
                 </footer>
             </div>
         </div>
@@ -121,16 +124,22 @@
         }
         
         document.addEventListener('DOMContentLoaded', () => {
+            // --- SAKLAR MODE DEVELOPER ---
+            // true  : Selalu tampilkan dashboard (untuk development).
+            // false : Terapkan aturan instalasi PWA (untuk produksi/commit).
+            const isDevMode = true; 
+            // -----------------------------
+
             const installPromptPage = document.getElementById('install-prompt-page');
             const dashboardPage = document.getElementById('dashboard-page');
 
             const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
 
-            if (isStandalone) {
-                // Pengguna telah menginstal PWA, tampilkan dashboard
+            if (isStandalone || isDevMode) {
+                // Tampilkan dashboard jika PWA terinstal ATAU mode developer aktif.
                 dashboardPage.classList.remove('hidden');
             } else {
-                // Pengguna ada di browser, tampilkan halaman prompt untuk instal
+                // Tampilkan halaman logo jika di browser dan mode developer mati.
                 installPromptPage.classList.remove('hidden');
                 installPromptPage.style.display = 'flex';
             }
