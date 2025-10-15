@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥳 Terima Kasih Atas Pembelian Anda! - SuperDigi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8eddd;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6">
+        <!-- Kontainer Utama -->
+        <div class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
+            
+            <!-- Logo -->
+            <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760373175/Black_and_Cream_Colorful_Retro_Vintage_Apparel_Logo_2_eid86m.png" alt="Logo SuperDigi" class="mx-auto h-20 md:h-24 mb-6">
+
+            <!-- Headline -->
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+                Terima Kasih Banyak! 🎉
+            </h1>
+
+            <!-- Sub-headline / Pujian -->
+            <p class="mt-3 text-lg md:text-xl font-medium text-blue-600">
+                Anda Telah Membuat Keputusan yang Sangat Cerdas! 🚀
+            </p>
+            
+            <div class="border-t my-8"></div>
+
+            <!-- Keterangan Sebelum Download -->
+            <div class="text-left text-gray-700">
+                <h2 class="text-xl font-semibold mb-3">Satu Langkah Lagi Menuju Kesuksesan...</h2>
+                <p class="mb-4">
+                    Untuk memastikan Anda dapat menggunakan produk ini secara maksimal, yuk tonton dulu video tutorial singkat di bawah ini. Jangan khawatir, mudah banget kok!
+                </p>
+            </div>
+
+            <!-- Video Tutorial -->
+            <div class="mt-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-3">Video Tutorial Penggunaan 👇</h3>
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden shadow-inner">
+                    <!-- Link video YouTube yang baru -->
+                    <iframe src="https://www.youtube.com/embed/0pgh3Sa6ja4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                </div>
+            </div>
+
+            <!-- Kolom Ceklis (Container diberi ID baru) -->
+            <div id="checkbox-container" class="mt-8 flex items-center justify-center">
+                <input type="checkbox" id="watched-tutorial" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500">
+                <label for="watched-tutorial" class="ml-2 text-lg text-gray-700 select-none">Saya sudah menonton video tutorial singkatnya. ✅</label>
+            </div>
+
+            <!-- Tombol Download Produk (PWA Install) -->
+            <div id="download-button-container" class="mt-10" style="display: none;">
+                <p class="text-gray-600 mb-4">Siap untuk mulai? Yuk, download produknya sekarang!</p>
+                <button id="download-product-button" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
+                    Download Produk Anda! 📥
+                </button>
+            </div>
+
+        </div>
+        
+        <!-- Footer -->
+        <footer class="mt-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 SuperDigi. Dibuat dengan ❤️</p>
+        </footer>
+    </div>
+    <!-- Script untuk rasio aspek video jika diperlukan -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/aspect-ratio"></script>
+    
+    <script>
+        let deferredPrompt;
+        
+        const watchedTutorialCheckbox = document.getElementById('watched-tutorial');
+        const downloadButtonContainer = document.getElementById('download-button-container');
+        const downloadProductButton = document.getElementById('download-product-button');
+        const checkboxContainer = document.getElementById('checkbox-container');
+
+        // Simpan prompt instalasi saat browser siap (ini terjadi di background)
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            console.log('PWA installation prompt is ready.');
+        });
+        
+        // Fungsi untuk menampilkan/menyembunyikan tombol download HANYA berdasarkan checkbox
+        function toggleDownloadButton() {
+            if (watchedTutorialCheckbox.checked) {
+                downloadButtonContainer.style.display = 'block';
+            } else {
+                downloadButtonContainer.style.display = 'none';
+            }
+        }
+
+        // Event listener untuk checkbox
+        watchedTutorialCheckbox.addEventListener('change', toggleDownloadButton);
+
+        // Event listener untuk tombol download yang akan memicu prompt PWA
+        downloadProductButton.addEventListener('click', async () => {
+            // Cek apakah prompt PWA tersedia SAAT TOMBOL DIKLIK
+            if (deferredPrompt) {
+                // Tampilkan prompt instalasi PWA
+                deferredPrompt.prompt();
+                
+                // Tunggu respons dari pengguna
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                
+                // Setelah pengguna merespons (baik install atau cancel), baru sembunyikan elemen
+                downloadButtonContainer.style.display = 'none';
+                checkboxContainer.style.display = 'none';
+
+                // Bersihkan prompt agar tidak bisa digunakan lagi
+                deferredPrompt = null;
+            } else {
+                // Jika prompt tidak tersedia (mungkin sudah diinstal atau browser tidak mendukung)
+                alert('Aplikasi sudah terinstal atau browser Anda tidak mendukung fitur ini. Coba buka di Google Chrome di HP Anda. 😉');
+            }
+        });
+
+        window.addEventListener('appinstalled', () => {
+            console.log('PWA was installed');
+            // Jika aplikasi berhasil diinstal, sembunyikan semua elemen terkait instalasi
+            downloadButtonContainer.style.display = 'none';
+            checkboxContainer.style.display = 'none';
+            deferredPrompt = null;
+        });
+
+        // Panggil saat halaman dimuat untuk memeriksa status awal
+        toggleDownloadButton();
+    </script>
+</body>
+</html>
+
