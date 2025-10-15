@@ -1,11 +1,11 @@
 {
-  "short_name": "SuperDigi",
-  "name": "SuperDigi AI Tools",
+  "name": "AI Tools Gen+ x Gemini Google",
+  "short_name": "AI Tools",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#f8eddd",
   "theme_color": "#f8eddd",
-  "description": "Koleksi Tools AI dari SuperDigi.",
+  "description": "Koleksi AI Tools canggih yang didukung oleh Gemini Google.",
   "icons": [
     {
       "src": "https://res.cloudinary.com/djqpz6rl8/image/upload/v1760373175/Black_and_Cream_Colorful_Retro_Vintage_Apparel_Logo_2_eid86m.png",
@@ -19,3 +19,4 @@
     }
   ]
 }
+
