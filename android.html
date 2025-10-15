@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥳 Panduan Instalasi Android - SuperDigi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8eddd; /* Fallback */
+            background-image: linear-gradient(to bottom right, #f8eddd, #fdf5ec);
+        }
+        /* Animasi utama kartu */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.7s ease-out forwards;
+        }
+
+        /* Animasi denyut untuk border kolom centang */
+        @keyframes pulse-border {
+            0%, 100% {
+                border-color: #d1d5db; /* gray-300 */
+            }
+            50% {
+                border-color: #60a5fa; /* blue-400 */
+            }
+        }
+        .animate-pulse-border {
+            animation: pulse-border 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 sm:p-6">
+        <!-- Kontainer Utama dengan Animasi -->
+        <div class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center animate-fade-in-up">
+            
+            <!-- Logo -->
+            <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760373175/Black_and_Cream_Colorful_Retro_Vintage_Apparel_Logo_2_eid86m.png" alt="Logo SuperDigi" class="mx-auto h-20 md:h-24 mb-6">
+
+            <!-- Headline -->
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight">
+                Satu Langkah Hebat Telah Anda Ambil! 🎉
+            </h1>
+
+            <!-- Sub-headline / Pujian -->
+            <p class="mt-3 text-lg md:text-xl font-medium text-blue-600">
+                Selamat! Anda baru saja membuat keputusan cerdas untuk masa depan Anda. 🚀
+            </p>
+            
+            <div class="border-t my-8"></div>
+
+            <!-- Keterangan Sebelum Instalasi -->
+            <div class="text-left text-gray-700">
+                <h2 class="text-xl font-semibold mb-3">Tinggal satu langkah lagi...</h2>
+                <p class="mb-4">
+                    Lihat panduan instalasi di bawah ini, lalu centang kotak konfirmasi untuk memunculkan tombol instalasi.
+                </p>
+            </div>
+
+            <!-- Panduan Gambar -->
+            <div class="mt-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Panduan Instalasi Aplikasi (Android) 👇</h3>
+                
+                <!-- Teks Menonjol yang Baru -->
+                <div class="mb-4 p-4 bg-amber-100 border-l-4 border-amber-500 text-amber-900 rounded-r-lg shadow text-left">
+                    <p class="font-bold">Setelah klik tombol "Buka & Install Aplikasi" nanti:</p>
+                    <p class="mt-1">Aplikasi akan terbuka di tab baru. Saat Dashboard terbuka, ikuti langkah-langkahnya seperti di gambar bawah ini.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760551028/3_bifvqm.jpg" alt="Panduan Instalasi Android Langkah 1" class="w-full rounded-lg shadow-md border">
+                    <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760551030/4_lzj2ct.jpg" alt="Panduan Instalasi Android Langkah 2" class="w-full rounded-lg shadow-md border">
+                    <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760551028/5_mio9xk.jpg" alt="Panduan Instalasi Android Langkah 3" class="w-full rounded-lg shadow-md border">
+                    <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760551028/6_r7hb4b.jpg" alt="Panduan Instalasi Android Langkah 4" class="w-full rounded-lg shadow-md border">
+                </div>
+            </div>
+
+            <!-- Kolom Ceklis (dengan background dan animasi) -->
+            <div class="mt-8 p-6 bg-gray-50 rounded-xl border-2 border-dashed animate-pulse-border transition-all duration-300 hover:border-blue-500 hover:shadow-lg">
+                <div id="checkbox-container" class="flex items-center justify-center">
+                    <input type="checkbox" id="watched-tutorial" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500">
+                    <label for="watched-tutorial" class="ml-3 text-lg text-gray-700 select-none cursor-pointer">OK, Saya sudah lihat panduannya! ✅</label>
+                </div>
+            </div>
+
+
+            <!-- Tombol Buka & Install -->
+            <div id="download-button-container" class="mt-6" style="display: none;">
+                <p class="text-gray-600 mb-4">Aplikasi akan terbuka di tab baru, lalu notifikasi instalasi akan muncul di halaman ini.</p>
+                <!-- Tombol Buka & Install -->
+                <button id="install-button"
+                   class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
+                    Buka & Install Aplikasi 📲
+                </button>
+                
+                <!-- Info Bantuan WA (dengan background) -->
+                <div class="mt-8 p-6 bg-green-50 rounded-xl transition-all duration-300 hover:shadow-lg">
+                    <p class="text-gray-600 text-sm">
+                        Mengalami kendala saat instalasi atau butuh bantuan lain? <br>Kami siap membantu via WhatsApp:
+                    </p>
+                    <a href="https://wa.me/6282211000219?text=halo%20kak%20%3A)%0Aaku%20mau%20tanya2%20kak..."
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       class="mt-4 inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.894 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.886-.001 2.269.655 4.512 1.908 6.386l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                        <span>Tanya via WhatsApp</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Kata Mutiara -->
+            <div class="mt-10 pt-8 border-t border-gray-200 space-y-4 text-left">
+                <!-- Quote 1 -->
+                <div class="p-4 bg-blue-50 rounded-lg shadow-sm">
+                    <p class="text-lg italic text-blue-800">
+                        "Jangan menunggu kesempatan, ciptakanlah. Anda sudah punya alatnya, sekarang saatnya berkarya!" ✨
+                    </p>
+                </div>
+                <!-- Quote 2 -->
+                <div class="p-4 bg-green-50 rounded-lg shadow-sm">
+                    <p class="text-lg italic text-green-800">
+                        "Satu-satunya batasan adalah keraguanmu. Hari ini adalah hari untuk melangkah maju dengan percaya diri." 🚀
+                    </p>
+                </div>
+                <!-- Quote 3 -->
+                <div class="p-4 bg-amber-50 rounded-lg shadow-sm">
+                    <p class="text-lg italic text-amber-800">
+                        "Setiap karya hebat dimulai dari satu langkah kecil. Anda sudah memulainya. Teruslah bergerak!" 💪
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <script>
+        const watchedTutorialCheckbox = document.getElementById('watched-tutorial');
+        const downloadButtonContainer = document.getElementById('download-button-container');
+        const installButton = document.getElementById('install-button');
+
+        // --- Logika PWA ---
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Mencegah browser menampilkan prompt default
+            e.preventDefault();
+            // Simpan event agar bisa dipicu nanti
+            deferredPrompt = e;
+        });
+
+        installButton.addEventListener('click', async () => {
+            // Buka aplikasi di tab baru
+            // URL ini mengarah ke halaman utama aplikasi Anda
+            window.open('https://upeet9.github.io/superdigi/', '_blank');
+
+            // Cek apakah prompt instalasi tersedia
+            if (deferredPrompt) {
+                // Tampilkan prompt instalasi
+                deferredPrompt.prompt();
+                
+                // Tunggu hasil dari prompt
+                const { outcome } = await deferredPrompt.userChoice;
+                
+                if (outcome === 'accepted') {
+                    console.log('Pengguna menerima instalasi');
+                } else {
+                    console.log('Pengguna menolak instalasi');
+                }
+                
+                // Prompt hanya bisa digunakan sekali
+                deferredPrompt = null;
+            } else {
+                alert('Aplikasi sudah diinstal atau browser Anda tidak mendukung fitur ini. Anda bisa menginstalnya secara manual dari menu browser (titik tiga).');
+            }
+        });
+        // --- Akhir Logika PWA ---
+
+
+        function toggleDownloadButton() {
+            if (watchedTutorialCheckbox.checked) {
+                downloadButtonContainer.style.display = 'block';
+            } else {
+                downloadButtonContainer.style.display = 'none';
+            }
+        }
+        watchedTutorialCheckbox.addEventListener('change', toggleDownloadButton);
+        toggleDownloadButton();
+    </script>
+</body>
+</html>
