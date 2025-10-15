@@ -17,58 +17,24 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8eddd;
-            transition: background-color 0.5s ease;
         }
         
-        /* Animasi untuk kartu saat muncul */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        .card-animation {
-            animation: fadeInUp 0.5s ease-out forwards;
-        }
-
-        #login-page {
-            transition: opacity 0.5s ease-out;
-        }
+        .card-animation { animation: fadeInUp 0.5s ease-out forwards; }
     </style>
 </head>
 <body class="text-gray-800 antialiased">
 
-    <!-- ===== HALAMAN LOGIN ===== -->
-    <div id="login-page" class="min-h-screen flex flex-col items-center justify-center p-4">
-        <div class="w-full max-w-sm">
-            <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760373175/Black_and_Cream_Colorful_Retro_Vintage_Apparel_Logo_2_eid86m.png" alt="Logo SuperDigi" class="mx-auto h-20 mb-6">
-            <div class="bg-white rounded-2xl shadow-xl p-8">
-                <h2 class="text-2xl font-bold text-center text-gray-800 mb-1">Selamat Datang</h2>
-                <p class="text-center text-gray-500 mb-6">Silakan masuk untuk melanjutkan.</p>
-                <form id="login-form">
-                    <div class="mb-4">
-                        <label for="password" class="sr-only">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Masukkan Password" class="w-full px-4 py-3 bg-gray-100 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                    </div>
-                    <button type="submit" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
-                        Masuk
-                    </button>
-                    <p id="error-message" class="text-red-500 text-sm text-center mt-4 hidden">Password salah!</p>
-                </form>
-            </div>
-             <p class="text-center text-gray-500 text-xs mt-6">
-                &copy; 2025 SuperDigi.
-            </p>
-        </div>
+    <!-- ===== HALAMAN UNTUK PENGGUNA BROWSER (HANYA LOGO) ===== -->
+    <div id="install-prompt-page" class="min-h-screen flex items-center justify-center p-6 hidden">
+        <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760373175/Black_and_Cream_Colorful_Retro_Vintage_Apparel_Logo_2_eid86m.png" alt="Logo SuperDigi" class="mx-auto h-24">
     </div>
 
 
-    <!-- ===== HALAMAN DASHBOARD UTAMA (Tersembunyi Awalnya) ===== -->
+    <!-- ===== HALAMAN DASHBOARD UTAMA (Hanya untuk pengguna terinstal) ===== -->
     <div id="dashboard-page" class="hidden">
         <div class="min-h-screen flex flex-col items-center justify-center p-4 lg:p-6">
             <!-- Kontainer Utama -->
@@ -105,7 +71,6 @@
                             <h2 class="text-lg font-bold text-gray-800">Ai Gen+ Famy</h2>
                             <p class="text-sm text-gray-600 mt-1">Konsep Foto Keluarga</p>
                         </div>
-                        <!-- Tooltip -->
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <span class="text-white text-lg font-semibold">Segera Hadir!</span>
                         </div>
@@ -118,34 +83,26 @@
                             <h2 class="text-lg font-bold text-gray-800">Ai Gen+ Pre/Wed</h2>
                              <p class="text-sm text-gray-600 mt-1">Ide & konsep Pernikahan.</p>
                         </div>
-                         <!-- Tooltip -->
                         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <span class="text-white text-lg font-semibold">Segera Hadir!</span>
                         </div>
                     </div>
                     
-                    <!-- Tool Card 4-6: Coming Soon -->
+                    <!-- Kartu Coming Soon -->
                     <div class="card-animation group relative bg-gray-100 rounded-2xl shadow-md overflow-hidden opacity-70 cursor-not-allowed flex flex-col" style="animation-delay: 300ms;" aria-disabled="true">
-                        <div class="w-full h-40 bg-gray-200 flex items-center justify-center">
-                            <svg class="w-12 h-12 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
-                        </div>
+                        <div class="w-full h-40 bg-gray-200 flex items-center justify-center"><svg class="w-12 h-12 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg></div>
                         <div class="p-5 text-center"><h2 class="text-lg font-bold text-gray-800">Tool Berikutnya</h2><p class="text-sm text-gray-600 mt-1">Coming Soon...</p></div>
                     </div>
                     <div class="card-animation group relative bg-gray-100 rounded-2xl shadow-md overflow-hidden opacity-70 cursor-not-allowed flex flex-col" style="animation-delay: 400ms;" aria-disabled="true">
-                        <div class="w-full h-40 bg-gray-200 flex items-center justify-center">
-                           <svg class="w-12 h-12 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 12l4.104 1.591a2.25 2.25 0 0 1 .659 1.591v5.714m6 0v-5.714a2.25 2.25 0 0 0-.659-1.591L15 12l-4.104-1.591a2.25 2.25 0 0 0-.659-1.591V3.104" /></svg>
-                        </div>
+                        <div class="w-full h-40 bg-gray-200 flex items-center justify-center"><svg class="w-12 h-12 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 12l4.104 1.591a2.25 2.25 0 0 1 .659 1.591v5.714m6 0v-5.714a2.25 2.25 0 0 0-.659-1.591L15 12l-4.104-1.591a2.25 2.25 0 0 0-.659-1.591V3.104" /></svg></div>
                         <div class="p-5 text-center"><h2 class="text-lg font-bold text-gray-800">Tool Berikutnya</h2><p class="text-sm text-gray-600 mt-1">Coming Soon...</p></div>
                     </div>
                      <div class="card-animation group relative bg-gray-100 rounded-2xl shadow-md overflow-hidden opacity-70 cursor-not-allowed flex flex-col" style="animation-delay: 500ms;" aria-disabled="true">
-                        <div class="w-full h-40 bg-gray-200 flex items-center justify-center">
-                             <svg class="w-12 h-12 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.82m5.84-2.56a16.5 16.5 0 0 0-1.232-1.232l-1.414 1.414M12 3v9m0 9v-9m0-9H3.75M12 3h8.25" /></svg>
-                        </div>
+                        <div class="w-full h-40 bg-gray-200 flex items-center justify-center"><svg class="w-12 h-12 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.82m5.84-2.56a16.5 16.5 0 0 0-1.232-1.232l-1.414 1.414M12 3v9m0 9v-9m0-9H3.75M12 3h8.25" /></svg></div>
                         <div class="p-5 text-center"><h2 class="text-lg font-bold text-gray-800">Tool Berikutnya</h2><p class="text-sm text-gray-600 mt-1">Coming Soon...</p></div>
                     </div>
                 </main>
                 
-                <!-- Footer -->
                 <footer class="mt-16 text-center text-gray-600 text-sm">
                     <p>&copy; 2025 SuperDigi.</p>
                 </footer>
@@ -155,68 +112,32 @@
 
 
     <script>
-        // Mendaftarkan Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                // Ganti '/sw.js' menjadi '/service-worker.js' jika nama file Anda berbeda
                 navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                    })
-                    .catch(err => {
-                        console.log('ServiceWorker registration failed: ', err);
-                    });
+                    .then(reg => console.log('ServiceWorker registration successful.', reg.scope))
+                    .catch(err => console.log('ServiceWorker registration failed: ', err));
             });
         }
         
-        // Logika untuk menampilkan halaman yang sesuai
         document.addEventListener('DOMContentLoaded', () => {
-            const loginPage = document.getElementById('login-page');
+            const installPromptPage = document.getElementById('install-prompt-page');
             const dashboardPage = document.getElementById('dashboard-page');
-            const loginForm = document.getElementById('login-form');
-            const passwordInput = document.getElementById('password');
-            const errorMessage = document.getElementById('error-message');
 
-            // Cek apakah PWA berjalan dalam mode standalone (telah diinstal)
             const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
 
             if (isStandalone) {
-                // Jika ya, langsung tampilkan dashboard
-                loginPage.style.display = 'none';
+                // Pengguna telah menginstal PWA, tampilkan dashboard
                 dashboardPage.classList.remove('hidden');
             } else {
-                // Jika tidak (dibuka di browser), tampilkan halaman login
-                loginPage.style.display = 'flex';
-                dashboardPage.classList.add('hidden');
+                // Pengguna ada di browser, tampilkan halaman prompt untuk instal
+                installPromptPage.classList.remove('hidden');
+                installPromptPage.style.display = 'flex';
             }
-
-            // Handler untuk form login
-            loginForm.addEventListener('submit', (event) => {
-                event.preventDefault();
-                const password = passwordInput.value;
-                
-                // Password diubah sesuai permintaan
-                if (password === 'narikcuan') {
-                    // Jika password benar, sembunyikan login & tampilkan dashboard
-                    errorMessage.classList.add('hidden');
-                    loginPage.style.opacity = 0;
-                    setTimeout(() => {
-                        loginPage.style.display = 'none';
-                        dashboardPage.classList.remove('hidden');
-                    }, 500); // Tunggu animasi selesai
-                } else {
-                    // Jika password salah, tampilkan pesan error
-                    errorMessage.classList.remove('hidden');
-                }
-            });
         });
-
     </script>
 
 </body>
 </html>
-
-
-
 
 
