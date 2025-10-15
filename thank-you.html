@@ -62,19 +62,20 @@
             
             <div class="border-t my-8"></div>
 
-            <!-- Keterangan Sebelum Download -->
+            <!-- Keterangan Sebelum Instalasi -->
             <div class="text-left text-gray-700">
                 <h2 class="text-xl font-semibold mb-3">Tinggal satu langkah lagi...</h2>
                 <p class="mb-4">
-                    Agar perjalanan Anda makin mulus, tonton dulu video panduan singkat di bawah ini ya. Tenang, gampang banget kok!
+                    Lihat panduan instalasi di bawah ini, lalu centang kotak konfirmasi untuk memunculkan tombol instalasi.
                 </p>
             </div>
 
-            <!-- Video Tutorial -->
+            <!-- Panduan Gambar -->
             <div class="mt-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-3">Video Panduan Penggunaan 👇</h3>
-                <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden shadow-inner">
-                    <iframe src="https://www.youtube.com/embed/0pgh3Sa6ja4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                <h3 class="text-lg font-semibold text-gray-800 mb-4">Panduan Instalasi Aplikasi 👇</h3>
+                <div class="flex flex-col md:flex-row gap-4 justify-center">
+                    <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760546279/Desain_tanpa_judul_6_s7nhtm.jpg" alt="Panduan Instalasi Langkah 1" class="w-full md:w-1/2 rounded-lg shadow-md border">
+                    <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760546282/Desain_tanpa_judul_7_ljz6b8.jpg" alt="Panduan Instalasi Langkah 2" class="w-full md:w-1/2 rounded-lg shadow-md border">
                 </div>
             </div>
 
@@ -82,26 +83,24 @@
             <div class="mt-8 p-6 bg-gray-50 rounded-xl border-2 border-dashed animate-pulse-border transition-all duration-300 hover:border-blue-500 hover:shadow-lg">
                 <div id="checkbox-container" class="flex items-center justify-center">
                     <input type="checkbox" id="watched-tutorial" class="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-blue-500">
-                    <label for="watched-tutorial" class="ml-3 text-lg text-gray-700 select-none cursor-pointer">Siap! Saya sudah nonton video panduannya. ✅</label>
+                    <label for="watched-tutorial" class="ml-3 text-lg text-gray-700 select-none cursor-pointer">OK, Saya sudah lihat panduannya! ✅</label>
                 </div>
             </div>
 
 
-            <!-- Tombol Download & Bantuan WA -->
+            <!-- Tombol Buka & Install -->
             <div id="download-button-container" class="mt-6" style="display: none;">
-                <p class="text-gray-600 mb-4">Sudah siap memulai petualangan baru Anda?</p>
-                <!-- Tombol Download -->
-                <a href="https://www.dropbox.com/scl/fi/en5vrzqc9vzv23x0e9b4g/SuperDigi.apk?rlkey=u0i1ws4n99gurf37fdqyav0we&st=9abep03h&dl=1" 
-                   target="_blank" 
-                   rel="noopener noreferrer" 
+                <p class="text-gray-600 mb-4">Aplikasi akan terbuka di tab baru, lalu notifikasi instalasi akan muncul di halaman ini.</p>
+                <!-- Tombol Buka & Install -->
+                <button id="install-button"
                    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
-                    Download Apk Android. 📥
-                </a>
+                    Buka & Install Aplikasi 📲
+                </button>
                 
-                <!-- Info Bantuan & Tombol WA (dengan background) -->
+                <!-- Info Bantuan WA (dengan background) -->
                 <div class="mt-8 p-6 bg-green-50 rounded-xl transition-all duration-300 hover:shadow-lg">
                     <p class="text-gray-600 text-sm">
-                        Untuk pengguna Apple/PC, atau jika butuh bantuan, <br>jangan ragu hubungi kami via WhatsApp:
+                        Jika butuh bantuan, <br>jangan ragu hubungi kami via WhatsApp:
                     </p>
                     <a href="https://wa.me/6282211000219?text=halo%20kak%20%3A)%0Aaku%20mau%20tanya2%20kak..."
                        target="_blank"
@@ -137,12 +136,48 @@
 
         </div>
     </div>
-    <!-- Script untuk rasio aspek video jika diperlukan -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/aspect-ratio"></script>
     
     <script>
         const watchedTutorialCheckbox = document.getElementById('watched-tutorial');
         const downloadButtonContainer = document.getElementById('download-button-container');
+        const installButton = document.getElementById('install-button');
+
+        // --- Logika PWA ---
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Mencegah browser menampilkan prompt default
+            e.preventDefault();
+            // Simpan event agar bisa dipicu nanti
+            deferredPrompt = e;
+        });
+
+        installButton.addEventListener('click', async () => {
+            // Buka aplikasi di tab baru
+            // URL ini mengarah ke halaman utama aplikasi Anda
+            window.open('https://upeet9.github.io/superdigi/', '_blank');
+
+            // Cek apakah prompt instalasi tersedia
+            if (deferredPrompt) {
+                // Tampilkan prompt instalasi
+                deferredPrompt.prompt();
+                
+                // Tunggu hasil dari prompt
+                const { outcome } = await deferredPrompt.userChoice;
+                
+                if (outcome === 'accepted') {
+                    console.log('Pengguna menerima instalasi');
+                } else {
+                    console.log('Pengguna menolak instalasi');
+                }
+                
+                // Prompt hanya bisa digunakan sekali
+                deferredPrompt = null;
+            } else {
+                alert('Aplikasi sudah diinstal atau browser Anda tidak mendukung fitur ini. Anda bisa menginstalnya secara manual dari menu browser (titik tiga).');
+            }
+        });
+        // --- Akhir Logika PWA ---
+
 
         function toggleDownloadButton() {
             if (watchedTutorialCheckbox.checked) {
