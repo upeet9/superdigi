@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🥳 Satu Langkah Hebat Telah Anda Ambil! - SuperDigi</title>
+    <title>🥳 Panduan Instalasi Aplikasi - SuperDigi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -71,18 +71,33 @@
             </div>
 
             <!-- Panduan Gambar -->
-            <div class="mt-6">
-                <h3 class="text-lg font-semibold text-gray-800 mb-4">Panduan Instalasi Aplikasi 👇</h3>
-                
-                <!-- Teks Menonjol yang Baru -->
-                <div class="mb-4 p-4 bg-amber-100 border-l-4 border-amber-500 text-amber-900 rounded-r-lg shadow text-left">
-                    <p class="font-bold">Setelah klik tombol "Buka & Install Aplikasi" nanti:</p>
-                    <p class="mt-1">Aplikasi akan terbuka di tab baru. Tetap di halaman ini dan tunggu beberapa saat sampai notifikasi muncul, lalu klik <span class="font-semibold">'Install'</span>.</p>
+            <div class="mt-6 space-y-8">
+                <!-- Panduan Android -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Panduan Instalasi (Android) 👇</h3>
+                    <div class="mb-4 p-4 bg-amber-100 border-l-4 border-amber-500 text-amber-900 rounded-r-lg shadow text-left">
+                        <p class="font-bold">Setelah klik tombol "Buka & Install Aplikasi" nanti:</p>
+                        <p class="mt-1">Aplikasi akan terbuka di tab baru. Saat Dashboard terbuka, ikuti langkah-langkahnya seperti di gambar bawah ini.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760563484/1_psatdv.jpg" alt="Panduan Instalasi Android Langkah 1" class="w-full rounded-lg shadow-md border">
+                        <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760563485/2_rtidnd.jpg" alt="Panduan Instalasi Android Langkah 2" class="w-full rounded-lg shadow-md border">
+                        <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760563484/3_ijbb4h.jpg" alt="Panduan Instalasi Android Langkah 3" class="w-full rounded-lg shadow-md border">
+                        <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760563484/4_qxclak.jpg" alt="Panduan Instalasi Android Langkah 4" class="w-full rounded-lg shadow-md border">
+                    </div>
                 </div>
 
-                <div class="flex flex-col md:flex-row gap-4 justify-center">
-                    <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760546279/Desain_tanpa_judul_6_s7nhtm.jpg" alt="Panduan Instalasi Langkah 1" class="w-full md:w-1/2 rounded-lg shadow-md border">
-                    <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760546282/Desain_tanpa_judul_7_ljz6b8.jpg" alt="Panduan Instalasi Langkah 2" class="w-full md:w-1/2 rounded-lg shadow-md border">
+                <!-- Panduan Apple/Safari -->
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Panduan Instalasi (Apple/Safari) 👇</h3>
+                     <div class="mb-4 p-4 bg-sky-100 border-l-4 border-sky-500 text-sky-900 rounded-r-lg shadow text-left">
+                        <p class="font-bold">Untuk pengguna Apple/iPhone:</p>
+                        <p class="mt-1">Buka Dashboard aplikasi di browser Safari, lalu ikuti panduan pada gambar untuk menambahkan aplikasi ke Layar Utama Anda.</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760564829/5_djdb4w.jpg" alt="Panduan Instalasi Apple Langkah 1" class="w-full rounded-lg shadow-md border">
+                        <img src="https://res.cloudinary.com/djqpz6rl8/image/upload/v1760564829/6_wqralo.jpg" alt="Panduan Instalasi Apple Langkah 2" class="w-full rounded-lg shadow-md border">
+                    </div>
                 </div>
             </div>
 
@@ -97,11 +112,11 @@
 
             <!-- Tombol Buka & Install -->
             <div id="download-button-container" class="mt-6" style="display: none;">
-                <p class="text-gray-600 mb-4">Aplikasi akan terbuka di tab baru, lalu notifikasi instalasi akan muncul di halaman ini.</p>
+                <p class="text-gray-600 mb-4">Aplikasi akan terbuka di tab baru. Ikuti panduan di atas sesuai perangkat Anda.</p>
                 <!-- Tombol Buka & Install -->
                 <button id="install-button"
                    class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-10 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 ease-in-out">
-                    Buka & Install Aplikasi 📲
+                    Buka Aplikasi Sekarang 📲
                 </button>
                 
                 <!-- Info Bantuan WA (dengan background) -->
@@ -163,7 +178,7 @@
             // URL ini mengarah ke halaman utama aplikasi Anda
             window.open('https://upeet9.github.io/superdigi/', '_blank');
 
-            // Cek apakah prompt instalasi tersedia
+            // Cek apakah prompt instalasi tersedia (untuk Android/Chrome)
             if (deferredPrompt) {
                 // Tampilkan prompt instalasi
                 deferredPrompt.prompt();
@@ -180,7 +195,8 @@
                 // Prompt hanya bisa digunakan sekali
                 deferredPrompt = null;
             } else {
-                alert('Aplikasi sudah diinstal atau browser Anda tidak mendukung fitur ini. Anda bisa menginstalnya secara manual dari menu browser (titik tiga).');
+                 // Untuk Safari atau browser lain, tidak ada prompt, jadi kita tidak perlu alert
+                console.log('Tidak ada prompt instalasi (kemungkinan Safari atau sudah terinstal). Pengguna akan mengikuti panduan manual.');
             }
         });
         // --- Akhir Logika PWA ---
