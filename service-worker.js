@@ -1,6 +1,7 @@
-// Nama cache
-const CACHE_NAME = 'superdigi-v1';
-// Daftar file yang akan di-cache
+// Versi cache — ubah versi di sini setiap kali deploy kalau mau kontrol manual
+const CACHE_NAME = 'superdigi-v2'; 
+
+// File yang mau di-cache
 const urlsToCache = [
   '/',
   '/index.html',
@@ -8,32 +9,46 @@ const urlsToCache = [
   'https://file.aitubo.ai/assets/doc/2024/10/ba9316fa9.jpg!w1280'
 ];
 
-// Event: Install
-// Saat service worker di-install, buka cache dan tambahkan file-file di atas.
+// INSTALL — cache file dan langsung aktifkan versi baru
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
+    caches.open(CACHE_NAME).then(cache => {
+      console.log('Cache opened');
+      return cache.addAll(urlsToCache);
+    })
   );
+  self.skipWaiting(); // Langsung aktif tanpa tunggu versi lama berhenti
 });
 
-// Event: Fetch
-// Saat ada permintaan (fetch) ke jaringan, coba cari di cache dulu.
-// Jika ada di cache, langsung berikan dari sana.
-// Jika tidak ada, lanjutkan ke jaringan.
+// ACTIVATE — hapus cache lama
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(name => {
+          if (name !== CACHE_NAME) {
+            console.log('Deleting old cache:', name);
+            return caches.delete(name);
+          }
+        })
+      );
+    })
+  );
+  self.clients.claim(); // Segera kendalikan semua tab aktif
+});
+
+// FETCH — coba ambil dari jaringan dulu, kalau gagal baru pakai cache
 self.addEventListener('fetch', event => {
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      }
-    )
+        // Simpan salinan respon ke cache (jika bisa)
+        const responseClone = response.clone();
+        caches.open(CACHE_NAME).then(cache => {
+          cache.put(event.request, responseClone);
+        });
+        return response;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
