@@ -1,10 +1,13 @@
 {
   "name": "AI Tools Gen+ x Gemini Google",
   "short_name": "AI Tools",
-  "start_url": ".",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#f8eddd",
   "theme_color": "#f8eddd",
+  "orientation": "portrait",
+  "lang": "id",
   "description": "Koleksi AI Tools canggih yang didukung oleh Gemini Google.",
   "icons": [
     {
@@ -19,4 +22,3 @@
     }
   ]
 }
-
